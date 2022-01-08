@@ -1,6 +1,7 @@
-import express from 'express'
-import UserControllers from './controllers/UserControllers'
-import RolesControllers from './controllers/RolesControllers'
+import * as express from 'express'
+import {UserControllers} from './controllers/UserControllers'
+import {RolesControllers} from './controllers/RolesControllers'
+
 
 
 
