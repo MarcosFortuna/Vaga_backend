@@ -8,21 +8,21 @@ export const UserControllers = {
     async index(req:Request, res:Response){
        
         try{
-        const users = await User.findAll({
+        const user = await User.findAll({
             include: {association: 'Role'}
         })
-
-            return res.json(users)
+        if(!user) return res.json({error: "Not Found"})
+            return res.json(user)
         }catch(e){
             res.status(500).send
         }
     },async indexById(req:Request, res:Response){
         const id = req.params.id
         try{
-            const user = await User.findByPk(id, {include: 'Role'})
-            if(!user) return res.json({error: "Not Found"})
+            const users = await User.findByPk(id, {include: 'Role'})
+            if(!users) return res.json({error: "Not Found"})
             
-            return res.json(user) 
+            return res.json(users) 
         }catch(e){
             res.status(500).send()
         }

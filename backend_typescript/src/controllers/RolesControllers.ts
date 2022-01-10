@@ -6,7 +6,11 @@ export const RolesControllers = {
     async index(req:Request, res:Response){
         try{
             const roles = await Roles.findAll()
+
+            if(!roles) return res.json({error: "Not Found"})
+            
             return res.json(roles)
+            
         }catch(e){
                 return res.status(500).send()
             }
